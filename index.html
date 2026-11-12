@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eee7da">
+  <meta name="description" content="رسالة عيد ميلاد من مصطفى لمامته، بكل الحب.">
+  <title>إلى أمي العزيزة — دا معمول عشانك</title>
+  <style>
+    :root {
+      --paper: #eee7da;
+      --paper-light: #f8f4ec;
+      --paper-deep: #e1d5c3;
+      --ink: #3b342d;
+      --muted: #81776b;
+      --accent: #956d4c;
+      --accent-dark: #735337;
+      --line: rgba(69, 54, 39, .16);
+      --shadow: 0 24px 70px rgba(57, 42, 27, .13);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--ink); background: var(--paper);
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif; line-height: 1.9;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    [hidden] { display: none !important; }
+    .grain {
+      position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .15;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    }
+    .cover {
+      position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 24px;
+      background: radial-gradient(ellipse at 50% 35%, #faf7f0 0%, var(--paper) 62%, #e8dece 100%);
+      transition: opacity .85s ease, visibility .85s ease;
+    }
+    .cover.is-opening { opacity: 0; visibility: hidden; }
+    .cover-card {
+      position: relative; width: min(100%, 510px); padding: clamp(36px, 8vw, 68px) clamp(25px, 8vw, 66px);
+      text-align: center; background: rgba(250, 247, 240, .74); border: 1px solid rgba(125, 97, 65, .22);
+      box-shadow: var(--shadow); animation: arrive .8s both;
+    }
+    .cover-card::before, .cover-card::after { content: ""; position: absolute; pointer-events: none; border: 1px solid rgba(149,109,76,.17); }
+    .cover-card::before { inset: 10px; }
+    .cover-card::after { inset: 16px; border-color: rgba(149,109,76,.1); }
+    .seal { position: relative; display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 20px; border-radius: 50%; color: var(--accent); border: 1px solid rgba(149,109,76,.4); font-size: 1.25rem; }
+    .cover-kicker { position: relative; color: var(--accent); font-size: .85rem; letter-spacing: .14em; }
+    .cover h1 { position: relative; margin: 12px 0 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.45rem, 8vw, 4rem); line-height: 1.25; font-weight: 400; }
+    .cover-subtitle { position: relative; margin: 4px 0 28px; color: var(--muted); font-size: 1.08rem; }
+    .lock-form { position: relative; display: grid; gap: 13px; }
+    .lock-form input {
+      width: 100%; min-height: 50px; padding: 10px 16px; text-align: center; color: var(--ink);
+      background: rgba(255,255,255,.55); border: 1px solid var(--line); outline: none;
+    }
+    .lock-form input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(149,109,76,.12); }
+    .open-button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 50px;
+      color: #fffaf2; background: var(--accent-dark); border: 0; letter-spacing: .16em; font-size: .9rem;
+      transition: background .2s, transform .2s;
+    }
+    .open-button:hover { background: #5e432c; transform: translateY(-1px); }
+    .open-button:disabled { cursor: wait; opacity: .8; }
+    .hint { position: relative; margin: 4px 0 0; color: var(--muted); font-size: .78rem; }
+    .error { position: relative; min-height: 1.2em; margin: -5px 0 0; color: #a3483b; font-size: .85rem; }
+    .main { opacity: 0; visibility: hidden; transition: opacity .8s ease .15s, visibility .8s ease .15s; }
+    .main.is-visible { opacity: 1; visibility: visible; }
+    .masthead { max-width: 1260px; margin: auto; padding: 22px clamp(20px, 5vw, 64px); display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: .78rem; letter-spacing: .08em; }
+    .masthead-mark { font-size: 1.1rem; color: var(--accent); }
+    .letter-layout {
+      width: min(1260px, 100%); margin: 0 auto; padding: 22px clamp(20px, 5vw, 64px) 90px;
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); align-items: start; gap: clamp(32px, 6vw, 80px);
+    }
+    .letter-card {
+      position: relative; grid-column: 1; grid-row: 1; min-height: 690px; padding: clamp(30px, 6vw, 68px);
+      background: var(--paper-light); border: 1px solid rgba(105,82,57,.17); box-shadow: 0 22px 60px rgba(57,42,27,.08);
+    }
+    .letter-card::before { content: ""; position: absolute; inset: 13px; border: 1px solid rgba(149,109,76,.16); pointer-events: none; }
+    .letter-heading, .letter-content, .letter-footer { position: relative; }
+    .letter-heading { margin-bottom: 30px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    .letter-heading .eyebrow { margin: 0 0 3px; color: var(--accent); font-size: .78rem; letter-spacing: .12em; }
+    .letter-heading h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: clamp(1.9rem, 4vw, 2.8rem); }
+    .letter-heading p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+    .letter-content { font-size: clamp(1.02rem, 1.45vw, 1.16rem); line-height: 2.18; }
+    .typed-block { margin: 0 0 21px; white-space: pre-wrap; min-height: 1.5em; }
+    .typed-block.active::after { content: ""; display: inline-block; width: 1px; height: 1.15em; margin-inline-start: 3px; vertical-align: -2px; background: var(--accent); animation: blink .85s step-end infinite; }
+    .letter-footer { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); text-align: center; color: var(--accent-dark); }
+    .letter-footer strong { display: block; font-size: clamp(1.35rem, 3vw, 1.75rem); font-weight: 500; }
+    .letter-footer span { font-family: Georgia, "Times New Roman", serif; direction: ltr; display: inline-block; font-size: .95rem; color: var(--muted); }
+    .photo-side { grid-column: 2; grid-row: 1; position: sticky; top: 22px; }
+    .photo-frame { position: relative; overflow: hidden; padding: 11px; background: #fbf8f1; box-shadow: var(--shadow); transform: rotate(1deg); touch-action: pan-y; user-select: none; }
+    .photo-main { width: 100%; height: min(44vw, 430px); min-height: 300px; object-fit: cover; display: block; background: #ddd0bc; transition: opacity .35s; }
+    .photo-main[data-focus="top"] { object-position: center top; }
+    .photo-arrow { position: absolute; z-index: 2; top: 50%; display: grid; place-items: center; width: 40px; height: 40px; padding: 0; transform: translateY(-50%); border: 1px solid rgba(255,255,255,.55); border-radius: 50%; color: #fff; background: rgba(51,42,32,.48); font-size: 1.5rem; line-height: 1; transition: background .2s, transform .2s; }
+    .photo-arrow:hover { background: rgba(51,42,32,.75); transform: translateY(-50%) scale(1.06); }
+    .photo-arrow.previous { left: 18px; }
+    .photo-arrow.next { right: 18px; }
+    .photo-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 17px 2px 0; }
+    .thumb { border: 0; padding: 3px; background: transparent; opacity: .72; transition: opacity .2s, transform .2s; }
+    .thumb img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+    .thumb[data-focus="top"] img { object-position: center top; }
+    .thumb:hover, .thumb[aria-pressed="true"] { opacity: 1; transform: translateY(-3px); }
+    .thumb[aria-pressed="true"] { outline: 1px solid var(--accent); outline-offset: 2px; }
+    .gallery-caption { margin: 16px 0 0; text-align: center; color: var(--accent-dark); font-size: 1.05rem; }
+    .audio-control { position: fixed; z-index: 5; bottom: 20px; left: 20px; display: flex; align-items: center; gap: 10px; padding: 10px 16px; color: var(--ink); background: rgba(248,244,236,.95); border: 1px solid var(--line); box-shadow: 0 8px 25px rgba(57,42,27,.12); }
+    .audio-control .note { color: var(--accent); font-size: 1.2rem; }
+    .audio-control span:last-child { font-size: .8rem; }
+    .audio-control[hidden] { display: none; }
+    .closing { max-width: 1260px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px) 34px; color: var(--muted); text-align: center; font-size: .8rem; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(12px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (max-width: 800px) {
+      .masthead { padding-inline: 20px; }
+      .letter-layout { display: flex; flex-direction: column; padding: 18px 18px 100px; gap: 28px; }
+      .photo-side { position: static; order: 0; width: min(100%, 520px); margin: auto; }
+      .photo-frame { width: min(80%, 370px); margin: auto; }
+      .photo-main { height: auto; aspect-ratio: 1 / 1.04; min-height: 0; }
+      .photo-strip { width: min(100%, 430px); margin-inline: auto; gap: 7px; }
+      .gallery-caption { margin-top: 13px; }
+      .letter-card { order: 1; width: 100%; min-height: 0; padding: 32px 25px; }
+      .letter-heading { margin-bottom: 21px; }
+      .letter-content { font-size: 1rem; line-height: 2.05; }
+      .audio-control { bottom: 12px; left: 12px; padding: 9px 13px; }
+    }
+    @media (max-width: 380px) {
+      .cover-card { padding: 33px 21px; }
+      .photo-frame { width: 87%; }
+      .letter-card { padding: 29px 21px; }
+      .photo-strip { gap: 4px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <section class="cover" id="cover" aria-labelledby="cover-title">
+    <div class="cover-card">
+      <div class="seal" aria-hidden="true">♡</div>
+      <div class="cover-kicker">A LETTER TO MOM</div>
+      <h1 id="cover-title">إلى بياعة الأوطه</h1>
+      <p class="cover-subtitle">دا معمول عشانك</p>
+      <form class="lock-form" id="lock-form">
+        <input id="password" type="password" autocomplete="off" placeholder="كلمة السر" aria-label="كلمة السر" required>
+        <button class="open-button" type="submit"><span>OPEN</span><span aria-hidden="true">→</span></button>
+        <p class="hint">تلميح صغير: كلمة بناديكي بيها دايمًا</p>
+        <p class="error" id="password-error" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <main class="main" id="main" aria-hidden="true">
+    <header class="masthead"><span>A LETTER TO MOM</span><span class="masthead-mark" aria-hidden="true">♡</span></header>
+    <div class="letter-layout">
+      <aside class="photo-side" aria-label="صور من ذكرياتنا">
+        <div class="photo-frame" id="photo-frame" role="region" aria-label="معرض الصور، اسحبي يمينًا للصورة التالية" tabindex="0">
+          <img class="photo-main" id="photo-main" src="assets/portrait.jpg" alt="مصطفى ومامته في ذكرى حلوة">
+          <button class="photo-arrow previous" id="photo-previous" type="button" aria-label="الصورة السابقة">‹</button>
+          <button class="photo-arrow next" id="photo-next" type="button" aria-label="الصورة التالية">›</button>
+        </div>
+        <div class="photo-strip" role="group" aria-label="اختاري صورة">
+          <button class="thumb" type="button" data-photo="assets/portrait.jpg" aria-label="صورة حضننا" aria-pressed="true"><img src="assets/portrait.jpg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/jpeg-17.jpeg" aria-label="صورة ماما بتحضنني" aria-pressed="false"><img src="assets/jpeg-17.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/family.jpg" aria-label="صورة العيلة" aria-pressed="false"><img src="assets/family.jpg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/beach.jpg" aria-label="صورة على البحر" aria-pressed="false"><img src="assets/beach.jpg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/shell-heart.jpg" aria-label="ذكرى على الرمل" aria-pressed="false"><img src="assets/shell-heart.jpg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/mirror-selfie.jpg" aria-label="سيلفي مع بعض" aria-pressed="false"><img src="assets/mirror-selfie.jpg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/close-up.jpg" aria-label="صورة قريبة" aria-pressed="false"><img src="assets/close-up.jpg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/extra-01.jpeg" aria-label="صورة جديدة 1" aria-pressed="false"><img src="assets/extra-01.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/extra-02.jpeg" aria-label="صورة جديدة 2" aria-pressed="false"><img src="assets/extra-02.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/extra-03.jpeg" aria-label="صورة جديدة 3" aria-pressed="false"><img src="assets/extra-03.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/extra-04.jpeg" aria-label="صورة جديدة 4" aria-pressed="false"><img src="assets/extra-04.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/extra-05.jpeg" aria-label="صورة جديدة 5" aria-pressed="false"><img src="assets/extra-05.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/extra-06.jpeg" aria-label="صورة جديدة 6" aria-pressed="false"><img src="assets/extra-06.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/extra-07.jpeg" aria-label="صورة جديدة 7" aria-pressed="false"><img src="assets/extra-07.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/extra-08.jpeg" data-focus="top" aria-label="صورة جديدة 8" aria-pressed="false"><img src="assets/extra-08.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/extra-09.jpeg" aria-label="صورة جديدة 9" aria-pressed="false"><img src="assets/extra-09.jpeg" alt=""></button>
+          <button class="thumb" type="button" data-photo="assets/jpeg-18.jpeg" aria-label="صورة جديدة 18" aria-pressed="false"><img src="assets/jpeg-18.jpeg" alt=""></button>
+        </div>
+        <p class="gallery-caption">كل سنة وانت طيبة يا منمونتي</p>
+      </aside>
+
+      <article class="letter-card" aria-label="رسالة عيد ميلاد لماما">
+        <header class="letter-heading">
+          <p class="eyebrow">كل الكلام اللي معرفتش أقوله</p>
+        </header>
+        <div class="letter-content" id="letter-content" aria-live="polite">
+          <p class="typed-block" data-text="كل سنه وانت طيبه يا حبيتي مش عارف اقولك ايه. ساعات الواحد بيبقى مشغول ومش بيعرف يعبر عن حبه وممكن ينسى يقول للناس اللي بيحبهم هما قد ايه مهمين بالنسباله، بس انا عايزك تهرفي ان وجودك في حياتي نعمه كبيبره اوي وان مهما كبرت و هفضل محتاجك جمبي، وان والله بحبك اوي اوي ويارب يخليكي ليا وتفضلي معايا على طول. مفيش كلام يوصف حبي ليكي يا ماما."></p>
+          <p class="typed-block" data-text="والله عارف ان في خناقات كثير ما بينا، بس والله زي ما انت عايزه تشوفيني احسن حد في الدنيا وبتخافي عليا، انا كمان بخاف عليكي وعايز اشوفك احسن واحده."></p>
+          <p class="typed-block" data-text="ونفسي أفضل أحكيلك عن كل حاجة بتحصل معايا، الحلوة والوحشة، وأفضل ألاقيكي أول حد أحب أشاركه يومي وأحكيله اللي في دماغي، لأن وجودك جنبي بيفرق معايا أكتر ما تتخيلي."></p>
+          <p class="typed-block" data-text="يارب السنه دي تخرجي منها احسن من اللي فاتت وتبقي جبتي العربيه اللي عايزاها، ويارب اقدر افرحك واجيب المجموع اللي يخليكي فخوره بيا واشوفك مرتاحه منغير ما تشيلي هم، وربنا يعوضك عن كل التعب وكل لحظه تعبتي فيها عشانا."></p>
+          <p class="typed-block" data-text="وزي ما أنا عارف إنك نفسك تشوفيني ناجح وفخور بيا، أنا كمان نفسي أشوفك فخورة بنفسك وبكل حاجة عملتيها، ونفسي أكون سبب في إنك تبتسمي وتفرحي وتبقي مطمنة إن تعبك معايا مراحش على الفاضي."></p>
+          <p class="typed-block" data-text="وعايزك تعرفي انك هتفضلي من اهم الناس في حياتي، وتعرفي ان مش دايما بعرف اعبر عن اللي جوايا ودا مش معناه ان حبي ليكي مش زي الاول زي ما انت بتبقي فاكره، بالعكس والله انت فارقه معايا في حاجات يمكن انا نفسي مش عارف اوصفها."></p>
+          <p class="typed-block" data-text="ونفسي لما أكبر وأحقق حاجات كتير في حياتي، تفضلي موجودة تشوفي كل خطوة فيها، وأفرحك بالحاجات اللي كنتي بتتمني تشوفيها فيا، وأقدر أردلك ولو جزء صغير من كل اللي عملتيه عشاني."></p>
+          <p class="typed-block" data-text="ويارب تتحجبي بقا 👎 ويارب تفضلي ماليه حياتنا."></p>
+          <p class="typed-block" data-text="معرفتش اجيب حاجه قيمه المرادي بس حاولت اعمل اللي اقدر عليه والله وان شاء الله اعوضهالك. مش عارف اقول ايه والله انا مش بعرف اقول الكلام دا، بس كل اللي عايز اقولهولك اني بحبك اوي والله ويارب اشوفك مبسوطه وسعيده وفي احسن حال."></p>
+          <p class="typed-block" data-text="وكل سنه وانت طيبه يا حبيبتي."></p>
+        </div>
+        <footer class="letter-footer" id="letter-footer" hidden>
+          <strong>بحبك أوي والله ❤️</strong>
+          <span>Forever your son.</span>
+        </footer>
+      </article>
+    </div>
+    <footer class="closing">اتعملت بكل بحب عشانك يا مزه ♡</footer>
+  </main>
+  <audio id="song" src="assets/song.mp3" preload="auto"></audio>
+  <button class="audio-control" id="audio-control" type="button" hidden aria-label="إيقاف الأغنية مؤقتًا">
+    <span class="note" aria-hidden="true">♫</span><span id="audio-label">الأغنية شغالة</span>
+  </button>
+
+  <script>
+    const cover = document.querySelector('#cover');
+    const main = document.querySelector('#main');
+    const form = document.querySelector('#lock-form');
+    const password = document.querySelector('#password');
+    const error = document.querySelector('#password-error');
+    const song = document.querySelector('#song');
+    const audioControl = document.querySelector('#audio-control');
+    const audioLabel = document.querySelector('#audio-label');
+    const blocks = [...document.querySelectorAll('.typed-block')];
+    const letterFooter = document.querySelector('#letter-footer');
+    const photoMain = document.querySelector('#photo-main');
+    const photoFrame = document.querySelector('#photo-frame');
+    const photos = [...document.querySelectorAll('.thumb')];
+    let current = 0;
+    let typing = false;
+    let opened = false;
+    let activePhotoIndex = 0;
+    let swipeStart = null;
+    let wheelLocked = false;
+
+    function setPhoto(index, keepThumbVisible = false) {
+      activePhotoIndex = (index + photos.length) % photos.length;
+      const photoIndex = activePhotoIndex;
+      photos.forEach((button, i) => button.setAttribute('aria-pressed', String(i === photoIndex)));
+      const chosen = photos[photoIndex];
+      if (chosen) {
+        photoMain.style.opacity = '.25';
+        setTimeout(() => {
+          photoMain.src = chosen.dataset.photo;
+          photoMain.dataset.focus = chosen.dataset.focus || 'center';
+          photoMain.style.opacity = '1';
+        }, 180);
+        if (keepThumbVisible) chosen.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      }
+    }
+
+    function movePhoto(direction) { setPhoto(activePhotoIndex + direction, true); }
+
+    function typeNextBlock() {
+      if (current >= blocks.length) {
+        letterFooter.hidden = false;
+        letterFooter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      const block = blocks[current];
+      const fullText = block.dataset.text;
+      const chars = [...fullText];
+      let index = 0;
+      typing = true;
+      block.classList.add('active');
+      const step = () => {
+        block.textContent += chars[index] ?? '';
+        index++;
+        if (index < chars.length) {
+          const delay = chars[index - 1] === '،' || chars[index - 1] === '.' ? 120 : 22;
+          setTimeout(step, delay);
+        } else {
+          block.classList.remove('active');
+          typing = false;
+          current++;
+          setTimeout(typeNextBlock, 260);
+        }
+      };
+      step();
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (password.value.trim() !== '1311') {
+        error.textContent = 'قربيها شوية… جربي تاني يا حبيبتي ♡';
+        password.focus();
+        return;
+      }
+      if (opened) return;
+      opened = true;
+      error.textContent = '';
+      cover.classList.add('is-opening');
+      main.classList.add('is-visible');
+      main.setAttribute('aria-hidden', 'false');
+      audioControl.hidden = false;
+      try { await song.play(); }
+      catch { audioLabel.textContent = 'شغّلي الأغنية ♫'; }
+      typeNextBlock();
+      setTimeout(() => { cover.hidden = true; window.scrollTo({ top: 0, behavior: 'smooth' }); }, 900);
+    });
+
+    document.querySelectorAll('.thumb').forEach((button) => {
+      button.addEventListener('click', () => {
+        setPhoto(photos.indexOf(button));
+      });
+    });
+    document.querySelector('#photo-previous').addEventListener('click', () => movePhoto(-1));
+    document.querySelector('#photo-next').addEventListener('click', () => movePhoto(1));
+    photoFrame.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse') swipeStart = { x: event.clientX, y: event.clientY };
+    });
+    photoFrame.addEventListener('pointerup', (event) => {
+      if (!swipeStart || event.pointerType === 'mouse') return;
+      const dx = event.clientX - swipeStart.x;
+      const dy = event.clientY - swipeStart.y;
+      swipeStart = null;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.25) movePhoto(dx > 0 ? 1 : -1);
+    });
+    photoFrame.addEventListener('pointercancel', () => { swipeStart = null; });
+    photoFrame.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') { event.preventDefault(); movePhoto(1); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); movePhoto(-1); }
+    });
+    photoFrame.addEventListener('wheel', (event) => {
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY) * 1.2 || wheelLocked) return;
+      event.preventDefault();
+      wheelLocked = true;
+      movePhoto(event.deltaX > 0 ? 1 : -1);
+      setTimeout(() => { wheelLocked = false; }, 500);
+    }, { passive: false });
+    audioControl.addEventListener('click', async () => {
+      if (song.paused) {
+        try { await song.play(); audioLabel.textContent = 'الأغنية شغالة'; audioControl.setAttribute('aria-label', 'إيقاف الأغنية مؤقتًا'); }
+        catch { audioLabel.textContent = 'حصلت مشكلة في تشغيل الأغنية'; }
+      } else {
+        song.pause(); audioLabel.textContent = 'كملي الأغنية'; audioControl.setAttribute('aria-label', 'استكمال الأغنية');
+      }
+    });
+    song.addEventListener('ended', () => { audioLabel.textContent = 'الأغنية خلصت'; audioControl.setAttribute('aria-label', 'إعادة تشغيل الأغنية'); });
+  </script>
+</body>
+</html>
